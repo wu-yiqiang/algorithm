@@ -20,18 +20,33 @@
 -105 <= nums[i] <= 105
 */
 
-const { bubbleSort, deduplication } = require('./utils/index')
+const { bubbleSort, uniqueSet } = require('./utils/index')
 var threeSum = function (nums) {
-  if (nums.length < 3) return []
-  bubbleSort(nums)
-  const num = deduplication(nums)
-  if (num.length < 3) return []
-  for (let i = 0; index < nums.length; i++) {
-    const element = nums[i]
-    for (let l = i + 1,  r = (nums.length - 1); index < r; l++, r--) {
-      const element = array[index]
+  const sumArr = []
+  if (nums.length < 3) return sumArr
+  const num = bubbleSort(nums)
+  for (let i = 0; i < num.length - 2; i++) {
+    if (i > 0 && num[i] === num[i - 1]) {
+      continue
+    }
+    for (let l = i + 1,  r = (num.length - 1); l < r;) {
+      const sum = num[i] + num[l] + num[r]
+      if (sum === 0) {
+        sumArr.push([num[i], num[l], num[r]])
+        while (l < r && nums[l+1] == nums[l]) l++
+        while (l < r && nums[r - 1] == nums[r]) r--
+        l++
+        r--
+      }
+      if (sum < 0) {
+        l++
+      }
+      if (sum > 0) {
+        r--
+      }
     }
   }
+  return sumArr
 }
 
-console.log(threeSum([-1, 0, 1, 2, -1, -4,0,4,-4,2,1]))
+console.log(threeSum([0,0,0,0]))
