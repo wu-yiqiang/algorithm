@@ -1,0 +1,92 @@
+
+// var groupAnagrams = function(strs) {
+//     const map = new Map();
+//     for (let str of strs) {
+//         let array = Array.from(str);
+//         array.sort();
+//         let key = array.toString();
+//         let list = map.get(key) ? map.get(key) : new Array();
+//         list.push(str);
+//         map.set(key, list);
+//     }
+//     return Array.from(map.values());
+// }
+
+
+// 使用计数法
+// var groupAnagrams = function(strs) {
+//     // 分离数组
+//     for(let str in strs){
+//         console.log(transObj(str))
+//     }
+// }
+
+// // 转化对象形式方法
+// function transObj(st){
+//     let obj = new Map()
+//     for(let i of st){
+//        obj.set(i)
+//     }
+//     return obj
+// }
+
+// console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
+
+/**
+ * excel序列表号 递归
+ */
+// var numObj={
+//     'A':1,'B':2,'C':3,'D':4,'E':'5','F':6,'G':7,'H':8,'I':9,'J':10,'K':11,'L':12,'M':13,'N':14,'O':15,'P':16,'Q':17,'R':18,'S':19,'T':20,'U':21,'v':22,'W':23,'X':24,'Y':25,'Z':26
+// }
+// var sum
+// function titleToNumber(strs){
+//    // 生成码表
+//    let arr = new Array()
+//    for(let str of strs){
+//        let num = numObj[str]
+//        arr.push(num)
+//    }
+//    arr.reverse()
+//    let sum = 0
+//    for(let i=0;i<arr.length;i++){
+//         sum+=arr[i]*Math.pow(26,i)
+//    }
+//    return sum
+// }
+
+// console.log(titleToNumber('ZY'))
+
+/**
+ * 跳跃游戏 反向跳跃
+ */
+function jump(nums){
+    let position = nums.length - 1;
+    let steps = 0;
+    while (position > 0) {
+        for (let i = 0; i < position; i++) {
+            if (i + nums[i] >= position) {
+                position = i;
+                steps++;
+                break;
+            }
+        }
+    }
+    return steps;
+}
+
+// 正向跳跃
+
+console.log(jump([2,3,0,1,4]))
+
+
+/**
+ * 最长有效括号
+ */
+function long(){
+    // 两种状态：嵌套和并行 三种情况：1.出现'('过剩情况，需裁剪左边'('  2.出现')'过剩情况,需裁剪右边')'
+    
+
+}
+
+console.log(long(')()())'))
