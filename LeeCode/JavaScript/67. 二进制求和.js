@@ -34,7 +34,39 @@ var addBinary = function(a, b) {
   let len = aLen > bLen ? aLen : bLen
   if (a === '0') return b
   if (b === '0') return a
-  
+  const aArray = a.split('')
+  const bArray = b.split('')
+  // 补0操作
+  while (aArray.length !== len) {
+    aArray.unshift(0)
+  }
+  while (bArray.length !== len) {
+    bArray.unshift(0)
+  }
+  let bite = 0
+  let str = []
+  let sum= 0
+  // 反转字符串
+  for (let index = len - 1; index >= 0; index--) {
+    sum = Number(aArray[index]) + Number(bArray[index]) + bite
+    debugger
+    if ((sum <= 1)) {
+      str.unshift(sum)
+      bite = 0
+    } 
+    if (sum === 2) { 
+      str.unshift(0)
+      bite = 1
+    }
+    if (sum > 2) {
+      str.unshift(1)
+      bite = 1
+    }
+  }
+  if (bite === 1) {
+    str.unshift(1)
+  }
+  return str.join('')
 };
 
 console.log(addBinary('11', '1'))
