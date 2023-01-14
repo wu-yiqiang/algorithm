@@ -1,7 +1,6 @@
 /* 
   构造二叉树
 */
-
 class Node {
   // 创建节点
   constructor(data) {
