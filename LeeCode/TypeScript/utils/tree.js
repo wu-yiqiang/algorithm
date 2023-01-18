@@ -14,6 +14,7 @@ var BinaryTree = /** @class */ (function () {
     /* 构造二叉树 */
     BinaryTree.prototype.createBinaryTree = function (key, data) {
         var newNode = new BiNode(key, data);
+        // console.log(newNode)
         if (!this.root) {
             this.root = newNode;
         }
@@ -36,7 +37,8 @@ var BinaryTree = /** @class */ (function () {
     /* 查找节点 */
     BinaryTree.prototype.searchNode = function () { };
     /*  插入节点 */
-    BinaryTree.prototype.insertNode = function (newNode, node) {
+    BinaryTree.prototype.insertNode = function (node, newNode) {
+        console.log(node, newNode);
         if (newNode.data < node.data) {
             // 如果插入的节点值比父节点小则插入到左节点上反之则插入到右节点上
             if (node.leftChild === null) {
@@ -60,6 +62,9 @@ var BinaryTree = /** @class */ (function () {
     BinaryTree.prototype.inOrderTraverse = function () { };
     return BinaryTree;
 }());
-var binTree = new BinaryTree(1, null);
+var binTree = new BinaryTree(1, 1);
 binTree.createBinaryTree(2, 2);
-console.log(BiNode);
+binTree.createBinaryTree(3, 3);
+binTree.createBinaryTree(4, 4);
+binTree.createBinaryTree(5, 5);
+console.log(binTree);

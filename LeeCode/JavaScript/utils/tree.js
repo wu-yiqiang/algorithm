@@ -148,5 +148,5 @@ tree.insert(5)
 tree.insert(3)
 tree.insert(9)
 tree.insert(8)
-console.log(tree.inOrderTraverse())
+console.log(tree)
 
