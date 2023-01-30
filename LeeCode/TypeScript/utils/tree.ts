@@ -2,7 +2,7 @@
 class BiNode {
 	data:any //节点内容
 	key:number //key值
-	isVisted:boolean //是否访问过
+	isVisted:boolean //是否遍历过
 	leftChild:BiNode //左孩子
 	rightChild:BiNode // 右孩子
 	constructor(key:number,data:any) {
