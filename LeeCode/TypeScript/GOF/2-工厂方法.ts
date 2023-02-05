@@ -18,12 +18,8 @@ class ConcreteProduct_1 implements Product2 {
 // 具体产品二
 class ConcreteProduct_2 implements Product2 {
     constructor() { }
-    method1() {
-
-    }
-    method2() {
-
-    }
+    method1() {}
+    method2() {}
 }
 
 // 抽象工厂
