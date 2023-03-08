@@ -4,7 +4,7 @@ abstract class Builder {
     public abstract buildPartC() : void;
     public abstract buildProduct() : Product;
 }
- 
+
 // 具体建造者
 class ConcreteBuilder extends Builder {
     private product : Product;
