@@ -108,7 +108,6 @@ function countSort2(arr) {
   for (const item of arr) {
     newArray[item-minNum] += 1
   }
-  console.log('sasssdsa', newArray)
   const result = new Array(lens)
   for (const i in newArray) {
     if (newArray[i]) {
