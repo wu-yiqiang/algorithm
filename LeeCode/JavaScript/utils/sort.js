@@ -75,9 +75,58 @@ function shellSort(arr) {
   }
   return arr
 }
+
+/* 计数排序 */
+function countSort(arr) {
+  const lens = arr.length
+  if (!lens) return arr
+  const maxNum  = Math.max(...arr)
+  const newArray = new Array(maxNum +1).fill(0)
+  console.log('newArray', newArray)
+  for (const item of arr) {
+    newArray[item] += 1
+  }
+  const result = new Array(lens)
+  for (const i in newArray) {
+    if (newArray[i]) {
+      let num = newArray[i]
+      while(num > 0) {
+        result.push(i)
+        num--
+      }
+    }
+  }
+  return result
+}
+/* 计数排序 优化版 */
+function countSort2(arr) {
+  const lens = arr.length
+  if (!lens) return arr
+  const maxNum  = Math.max(...arr)
+  const minNum  = Math.min(...arr)
+  const newArray = new Array(maxNum-minNum +1).fill(0)
+  for (const item of arr) {
+    newArray[item-minNum] += 1
+  }
+  console.log('sasssdsa', newArray)
+  const result = new Array(lens)
+  for (const i in newArray) {
+    if (newArray[i]) {
+      let num = newArray[i]
+      while(num > 0) {
+        result.push(+i+minNum)
+        num--
+      }
+    }
+  }
+  console.log('sadsa', result)
+  return result
+}
+countSort2([101,109,107,103,108,102,103,110,107,103])
 module.exports = {
   bubbleSort,
   selectionSort,
   insertionSort,
   shellSort
 }
+
