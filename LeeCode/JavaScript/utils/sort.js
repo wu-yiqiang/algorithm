@@ -127,7 +127,6 @@ function countSort2(arr) {
 function mergeSort(arr) {  // 采用自上而下的递归方法
   var len = arr.length;
   if(len < 2)  return arr;
-
   function merge(left, right) {
     var result = [];
     while (left.length && right.length) {
