@@ -121,7 +121,39 @@ function countSort2(arr) {
   console.log('sadsa', result)
   return result
 }
-countSort2([101,109,107,103,108,102,103,110,107,103])
+
+
+/*归并排序*/
+function mergeSort(arr) {  // 采用自上而下的递归方法
+  var len = arr.length;
+  if(len < 2)  return arr;
+
+  function merge(left, right) {
+    var result = [];
+    while (left.length && right.length) {
+      if (left[0] <= right[0]) {
+        result.push(left.shift());
+      } else {
+        result.push(right.shift());
+      }
+    }
+
+    while (left.length)
+        result.push(left.shift());
+
+    while (right.length)
+        result.push(right.shift());
+
+    return result;
+  }
+  var middle = Math.floor(len / 2),
+      left = arr.slice(0, middle),
+      right = arr.slice(middle);
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+
+console.log(mergeSort([101,109,107,103,108,102,103,110,107,103]))
 module.exports = {
   bubbleSort,
   selectionSort,
