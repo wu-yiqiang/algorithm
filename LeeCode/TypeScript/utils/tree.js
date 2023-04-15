@@ -9,7 +9,6 @@ var BiNode = /** @class */ (function () {
     }
     return BiNode;
 }());
-;
 var BinaryTree = /** @class */ (function () {
     function BinaryTree(key, data) {
         this.root = new BiNode(key, data);
@@ -27,7 +26,7 @@ var BinaryTree = /** @class */ (function () {
     };
     /*  插入节点 */
     BinaryTree.prototype.insertNode = function (node, newNode) {
-        if (newNode.data < node.data) {
+        if (newNode.key < node.key) {
             // 如果插入的节点值比父节点小则插入到左节点上反之则插入到右节点上
             if (node.leftChild === null) {
                 node.leftChild = newNode;
@@ -107,34 +106,58 @@ var BinaryTree = /** @class */ (function () {
         return biNode.data;
     };
     /* 删除一个节点 */
-    BinaryTree.prototype.removeNode = function () { };
-    /* 添加一个节点 */
-    BinaryTree.prototype.addNode = function () { };
+    BinaryTree.prototype.removeNode = function (n) {
+        var _a, _b;
+        var biNode = this.root;
+        var node = this.traverseLeftRightChildrenTree(biNode, n);
+        if (node === null || node === void 0 ? void 0 : node.key) {
+            // 当要删除的节点为叶子节点
+            if (!(node === null || node === void 0 ? void 0 : node.rightChild) && !(node === null || node === void 0 ? void 0 : node.leftChild)) {
+                node = null;
+                console.log('assda', node);
+            }
+            // 只有左边子树
+            if ((node === null || node === void 0 ? void 0 : node.leftChild) && !(node === null || node === void 0 ? void 0 : node.rightChild)) {
+                node = (_a = node === null || node === void 0 ? void 0 : node.leftChild) !== null && _a !== void 0 ? _a : null;
+                console.log('assdakkkkkk');
+            }
+            // 只有右边子树
+            if (!(node === null || node === void 0 ? void 0 : node.leftChild) && (node === null || node === void 0 ? void 0 : node.rightChild)) {
+                node = (_b = node === null || node === void 0 ? void 0 : node.rightChild) !== null && _b !== void 0 ? _b : null;
+                console.log('assdakkklllllllllllllkkk');
+            }
+            // 左右子树都存在
+        }
+        return biNode;
+    };
     /* 查找节点 */
     BinaryTree.prototype.searchNode = function (n) {
         var biNode = this.root;
-        return this.traverseChildrenTree(biNode, n);
-    };
-    BinaryTree.prototype.traverseChildrenTree = function (biNode, n) {
-        if (biNode.data === n)
+        var node = this.traverseLeftRightChildrenTree(biNode, n);
+        if (node === null || node === void 0 ? void 0 : node.key)
             return true;
-        // 遍历右子树
-        if (n > biNode.data && biNode.rightChild)
-            this.traverseChildrenTree(biNode.rightChild, n);
-        // 遍历左子树
-        if (n < biNode.data && biNode.leftChild)
-            this.traverseChildrenTree(biNode.leftChild, n);
         return false;
+    };
+    /*遍历左右子树*/
+    BinaryTree.prototype.traverseLeftRightChildrenTree = function (biNode, n) {
+        if (biNode.key === n)
+            return biNode;
+        // 遍历右子树
+        if (n > biNode.key && biNode.rightChild)
+            return this.traverseLeftRightChildrenTree(biNode.rightChild, n);
+        // 遍历左子树
+        if (n < biNode.key && biNode.leftChild)
+            return this.traverseLeftRightChildrenTree(biNode.leftChild, n);
+        return null;
     };
     return BinaryTree;
 }());
-var binTree = new BinaryTree(77, 77);
-binTree.createBinaryTree(89, 89);
-binTree.createBinaryTree(34, 34);
-binTree.createBinaryTree(14, 14);
-binTree.createBinaryTree(56, 56);
-binTree.createBinaryTree(58, 58);
-binTree.createBinaryTree(99, 99);
-binTree.createBinaryTree(2, 2);
-binTree.createBinaryTree(4, 4);
-console.log(binTree.searchNode(0));
+var binTree = new BinaryTree(77, '123');
+binTree.createBinaryTree(89, '2333');
+binTree.createBinaryTree(34, '33455');
+binTree.createBinaryTree(14, '223');
+binTree.createBinaryTree(56, '90');
+binTree.createBinaryTree(58, '80');
+binTree.createBinaryTree(99, '888');
+binTree.createBinaryTree(2, '76');
+console.log(binTree.removeNode(2));
