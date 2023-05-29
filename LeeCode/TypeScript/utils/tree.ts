@@ -65,21 +65,21 @@ class BinaryTree {
 
   /* 搜索第N小的值 */
   public minNValue(n: number) {
-    this.lists = [];
+    this.lists = []
     let biNode = this.root
     while (biNode != null || this.lists.length) {
       while (biNode != null) {
-        this.lists.push(biNode);
-        biNode = biNode.leftChild;
+        this.lists.push(biNode)
+        biNode = biNode.leftChild
       }
-      biNode = this.lists.pop();
-      --n;
+      biNode = this.lists.pop()
+      --n
       if (n === 0) {
-        break;
+        break
       }
-      biNode = biNode.rightChild;
+      biNode = biNode.rightChild
     }
-    return biNode.data;
+    return biNode.data
   }
 
   /* 搜索最大值 */
@@ -97,21 +97,21 @@ class BinaryTree {
 
   /* 搜索最N大的值 */
   public maxNValue(n: number) {
-    this.lists = [];
+    this.lists = []
     let biNode = this.root
     while (biNode != null || this.lists.length) {
       while (biNode != null) {
-        this.lists.push(biNode);
-        biNode = biNode.rightChild;
+        this.lists.push(biNode)
+        biNode = biNode.rightChild
       }
-      biNode = this.lists.pop();
-      --n;
+      biNode = this.lists.pop()
+      --n
       if (n === 0) {
-        break;
+        break
       }
-      biNode = biNode.leftChild;
+      biNode = biNode.leftChild
     }
-    return biNode.data;
+    return biNode.data
   }
 
   /*删除一个节点*/
@@ -121,13 +121,13 @@ class BinaryTree {
     if (node?.key) {
       // 当要删除的节点为叶子节点
       if (!node?.rightChild && !node?.leftChild) {
-        node = null;
+        node = null
         console.log('assda', node)
       }
       // 只有左边子树
-      if (node?.leftChild && !node?.rightChild) node = node.leftChild;
+      if (node?.leftChild && !node?.rightChild) node = node.leftChild
       // 只有右边子树
-      if (!node?.leftChild && node?.rightChild) node = node.rightChild;
+      if (!node?.leftChild && node?.rightChild) node = node.rightChild
       // 左右子树都存在
     }
     return biNode
@@ -139,6 +139,17 @@ class BinaryTree {
     const node = this.traverseLeftRightChildrenTree(biNode, n)
     if (node?.key) return true
     return false
+  }
+  /* 查找树的深度 */
+  public maxDepth() {
+    return this.traTreeDept(this.root)
+  }
+  /* 遍历树的深度 */
+  private traTreeDept(biNode: BiNode) {
+    if (biNode === null) return 0
+    const leftMax = this.traTreeDept(biNode?.leftChild)
+    const rightMax = this.traTreeDept(biNode?.rightChild)
+    return 1 + Math.max(leftMax, rightMax)
   }
 
   /*遍历左右子树*/
@@ -152,33 +163,33 @@ class BinaryTree {
   }
 
   /* 先序遍历(根左右) */
-//  public  preOrderTraverseNode(callback) {
-//    const biNode = this.root
-//    if (biNode != null) {
-//      callback(biNode.key);
-//      this.preOrderTraverseNode(biNode.leftChild, callback);
-//      this.preOrderTraverseNode(biNode.rightChild, callback);
-//    }
-//  }
-//
-//  // 中序遍历所有节点（左根右）
-//  public  inOrderTraverseNode(callback) {
-//    const biNode = this.root
-//    if (biNode != null) {
-//      this.inOrderTraverseNode(biNode.leftChild, callback);
-//      callback(biNode.key);
-//      this.inOrderTraverseNode(biNode.rightChild, callback);
-//    }
-//  }
-//  //后序遍历所有节点（左右根）
-//  public  postOrderTraverseNode(callback) {
-//    const biNode = this.root
-//    if (biNode != null) {
-//      this.postOrderTraverseNode(biNode.leftChild, callback);
-//      this.postOrderTraverseNode(biNode.rightChild, callback);
-//      callback(biNode.key);
-//    }
-//  }
+  //  public  preOrderTraverseNode(callback) {
+  //    const biNode = this.root
+  //    if (biNode != null) {
+  //      callback(biNode.key);
+  //      this.preOrderTraverseNode(biNode.leftChild, callback);
+  //      this.preOrderTraverseNode(biNode.rightChild, callback);
+  //    }
+  //  }
+  //
+  //  // 中序遍历所有节点（左根右）
+  //  public  inOrderTraverseNode(callback) {
+  //    const biNode = this.root
+  //    if (biNode != null) {
+  //      this.inOrderTraverseNode(biNode.leftChild, callback);
+  //      callback(biNode.key);
+  //      this.inOrderTraverseNode(biNode.rightChild, callback);
+  //    }
+  //  }
+  //  //后序遍历所有节点（左右根）
+  //  public  postOrderTraverseNode(callback) {
+  //    const biNode = this.root
+  //    if (biNode != null) {
+  //      this.postOrderTraverseNode(biNode.leftChild, callback);
+  //      this.postOrderTraverseNode(biNode.rightChild, callback);
+  //      callback(biNode.key);
+  //    }
+  //  }
 }
 
 const binTree = new BinaryTree(77, '123')
@@ -189,5 +200,7 @@ binTree.createBinaryTree(56, '90')
 binTree.createBinaryTree(58, '80')
 binTree.createBinaryTree(99, '888')
 binTree.createBinaryTree(2, '76')
+binTree.createBinaryTree(79, '79')
+binTree.createBinaryTree(59, '59')
 
-console.log(binTree.removeNode(2))
+console.log(binTree.maxDepth())

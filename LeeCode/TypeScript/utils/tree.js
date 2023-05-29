@@ -105,9 +105,8 @@ var BinaryTree = /** @class */ (function () {
         }
         return biNode.data;
     };
-    /* 删除一个节点 */
+    /*删除一个节点*/
     BinaryTree.prototype.removeNode = function (n) {
-        var _a, _b;
         var biNode = this.root;
         var node = this.traverseLeftRightChildrenTree(biNode, n);
         if (node === null || node === void 0 ? void 0 : node.key) {
@@ -117,15 +116,11 @@ var BinaryTree = /** @class */ (function () {
                 console.log('assda', node);
             }
             // 只有左边子树
-            if ((node === null || node === void 0 ? void 0 : node.leftChild) && !(node === null || node === void 0 ? void 0 : node.rightChild)) {
-                node = (_a = node === null || node === void 0 ? void 0 : node.leftChild) !== null && _a !== void 0 ? _a : null;
-                console.log('assdakkkkkk');
-            }
+            if ((node === null || node === void 0 ? void 0 : node.leftChild) && !(node === null || node === void 0 ? void 0 : node.rightChild))
+                node = node.leftChild;
             // 只有右边子树
-            if (!(node === null || node === void 0 ? void 0 : node.leftChild) && (node === null || node === void 0 ? void 0 : node.rightChild)) {
-                node = (_b = node === null || node === void 0 ? void 0 : node.rightChild) !== null && _b !== void 0 ? _b : null;
-                console.log('assdakkklllllllllllllkkk');
-            }
+            if (!(node === null || node === void 0 ? void 0 : node.leftChild) && (node === null || node === void 0 ? void 0 : node.rightChild))
+                node = node.rightChild;
             // 左右子树都存在
         }
         return biNode;
@@ -137,6 +132,18 @@ var BinaryTree = /** @class */ (function () {
         if (node === null || node === void 0 ? void 0 : node.key)
             return true;
         return false;
+    };
+    /* 查找树的深度 */
+    BinaryTree.prototype.maxDepth = function () {
+        return this.traTreeDept(this.root);
+    };
+    /* 遍历树的深度 */
+    BinaryTree.prototype.traTreeDept = function (biNode) {
+        if (biNode === null)
+            return 0;
+        var leftMax = this.traTreeDept(biNode === null || biNode === void 0 ? void 0 : biNode.leftChild);
+        var rightMax = this.traTreeDept(biNode === null || biNode === void 0 ? void 0 : biNode.rightChild);
+        return 1 + Math.max(leftMax, rightMax);
     };
     /*遍历左右子树*/
     BinaryTree.prototype.traverseLeftRightChildrenTree = function (biNode, n) {
@@ -160,4 +167,6 @@ binTree.createBinaryTree(56, '90');
 binTree.createBinaryTree(58, '80');
 binTree.createBinaryTree(99, '888');
 binTree.createBinaryTree(2, '76');
-console.log(binTree.removeNode(2));
+binTree.createBinaryTree(79, '79');
+binTree.createBinaryTree(59, '59');
+console.log(binTree.maxDepth());
