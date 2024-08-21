@@ -23,36 +23,40 @@
 // s 仅由数字和英文字母组成
 
 
-function isHuiWen(strs) {
-    if (strs.length = 1) return false
-    for (let i = 0, j = strs.length - 1; i <= j; i++, j--) {
-        if (strs[i] !== strs[j]) return false
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    if (s.length <= 1) return s
+    if (s.length == 2) {
+        if (s[0] == s[1]) return s
+        return s[0]
     }
-    return true
-}
-
-function spliceStrs(strs) {
-    if (strs.length <= 1) return ""
-    if (strs.length == 2) {
-        if (strs[0] == strs[1]) return strs
-        return ""
-    }
-    let huiwenStr = ""
-    let length = 0
-    let len = strs.length
-    const huiwen = isHuiWen(strs)
-    if (huiwen) return strs
+    let huiwenStr = s[0]
+    let length = 1
+    let len = s.length
+    const huiwen = isHuiWen(s)
+    if (huiwen) return s
     for (let i = 1; i < len; i++) {
-        for (let j = 0; j <= len; j++) {
+        for (let j = 0; j + i < len; j++) {
             const l = j + i
             if (l >= len) return huiwenStr
-            const str = strs.slice(j, l+1)
-            console.log('sadas', j, l, str)
+            const str = s.slice(j, l+1)
             const huiwen = isHuiWen(str)
             if (huiwen && str.length > length) huiwenStr = str
         }
     }
     return huiwenStr
-}
+};
 
-console.log(spliceStrs("cbbd"))
+
+function isHuiWen(strs) {
+    if (strs.length == 1) return false
+    for (let i = 0, j = strs.length - 1; i <= j; i++, j--) {
+        if (strs[i] !== strs[j]) {
+            return false
+        }
+    }
+    return true
+}
