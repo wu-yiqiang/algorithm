@@ -40,8 +40,10 @@ function spliceStrs(strs) {
     let huiwenStr = ""
     let length = 0
     let len = strs.length
-    for (let i = 1; i <= len; i++) {
-        for (let j = 0; j < len; j++) {
+    const huiwen = isHuiWen(strs)
+    if (huiwen) return strs
+    for (let i = 1; i < len; i++) {
+        for (let j = 0; j <= len; j++) {
             const l = j + i
             if (l >= len) return huiwenStr
             const str = strs.slice(j, l+1)
