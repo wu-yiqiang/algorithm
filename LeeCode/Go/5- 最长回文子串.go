@@ -30,31 +30,44 @@ func longestPalindrome(s string) string {
 	}
     if len(s) == 2 {
         if (s[0] == s[1]) {
-			return s
-		}
-        return s[0]
+					return s
+					}
+      	return s[0:1]
     }
-     huiwenStr := s[0]
+     huiwenStr := s[0:1]
      length := 1
      lens := len(s)
      huiwen := isHuiWen(s)
     if huiwen == true { 
 		return s
 	}
-    for (let i = 1; i < lens; i++) {
-        for (let j = 0; j + i < lens; j++) {
+    for i := 1; i < lens; i++ {
+        for  j := 0; j + i < lens; j++ {
             l := j + i
             if l >= lens {
 				return huiwenStr
 			}
-            str := s.slice(j, l+1)
+            str := s[j: l+1]
             huiwen := isHuiWen(str)
-            if huiwen == true && str.length > length {
+            if huiwen == true && len(str) > length {
 				huiwenStr = str
 			}
         }
     }
     return huiwenStr
+}
+
+func isHuiWen(strs string) bool {
+    if len(strs) == 1 {
+		return false
+	}
+    for i,j := 0, len(strs) - 1; i <= j; i++ {
+        if strs[i] != strs[j] {
+            return false
+        }
+				j--
+    }
+    return true
 }
 
 func isHuiWen(strs: string) bool {
