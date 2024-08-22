@@ -25,5 +25,46 @@
 // s 仅由数字和英文字母（大写和/或小写）组成
 
 func longestPalindrome(s string) string {
+	if len(s) <= 1 {
+		return s
+	}
+    if len(s) == 2 {
+        if (s[0] == s[1]) {
+			return s
+		}
+        return s[0]
+    }
+     huiwenStr := s[0]
+     length := 1
+     lens := len(s)
+     huiwen := isHuiWen(s)
+    if huiwen == true { 
+		return s
+	}
+    for (let i = 1; i < lens; i++) {
+        for (let j = 0; j + i < lens; j++) {
+            l := j + i
+            if l >= lens {
+				return huiwenStr
+			}
+            str := s.slice(j, l+1)
+            huiwen := isHuiWen(str)
+            if huiwen == true && str.length > length {
+				huiwenStr = str
+			}
+        }
+    }
+    return huiwenStr
+}
 
+func isHuiWen(strs: string) bool {
+    if len(strs) == 1 {
+		return false
+	}
+    for (let i = 0, j = strs.length - 1; i <= j; i++, j--) {
+        if strs[i] !== strs[j] {
+            return false
+        }
+    }
+    return true
 }
