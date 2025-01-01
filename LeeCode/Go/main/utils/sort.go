@@ -40,9 +40,9 @@ func countSort(arr []int) []int {
 			result = append(result , k)
 		}
 	}
-	for _, str := range result {
-		fmt.Println(str)
-	}
+	// for _, str := range result {
+	// 	// fmt.Println(str)
+	// }
 	return result
 }
 func countSort2(arr []int) []int {
@@ -83,35 +83,29 @@ func RemoveRepByMap(slc []int) []int {
     return result
 }
 func longestConsecutive(nums []int) int {
-	length := len(nums)
-	if length == 0 {
+	leng := len(nums)
+	if leng == 0 {
 		return 0
 	}
-	if length == 1 {
+	if leng == 1 {
 		return 1
 	}
 	// 排序
 	newNums := countSort(nums)
 	// 去重
 	newNum := RemoveRepByMap(newNums)
+	length := len(newNum)
 	collections := []int{0};
-    max := 0;
+  max := 0;
 	i := 0
 	for i < length {
 		j := i + 1
-		fmt.Println("111111", i)
-		if j < length {
-			if newNum[i] + 1 !=  newNum[j] || j == length {
+		if (j < length && newNum[i] + 1 !=  newNum[j]) || j == length {
 				collections = append(collections, j)
 				i = j;
-			} else {
-				i++
-			}
+		} else {
+				i++;
 		}
-		if (i >= length) {
-			break
-		}
-		fmt.Println("撒大苏打", i)
 	}
 	cLen := len(collections)
 	for k2, _ := range collections {
@@ -127,36 +121,37 @@ func longestConsecutive(nums []int) int {
 	return max
 }
 
-func lru(array []int,limit int, data int) {
-	len := len(array)
-	if limit > len {
-		if (array) {
+// func lru(array []int,limit int, data int) {
+// 	len := len(array)
+// 	if limit > len {
+// 		if (array) {
 
-		} else {
+// 		} else {
 
-		}
-	} else {
+// 		}
+// 	} else {
 
-	}
-}
+// 	}
+// }
 
 func main() {
 
-	// arr := []int{50, 23, 9, 46, 81, 102, 99, 43, 32, 14}
+	arr := []int{0,3,7,2,5,8,4,6,0,1}
+	longestConsecutive(arr)
 	// countSort(arr)
 	// arr2 := []int{101,109,107,103,108,102,103,110,107,103}
 	// countSort2(arr2)
-	type dataStru struct  {
-		pre <T>s
-		data int
-		next string
-	}
-	as := []int{}
-	data := dataStru{
-		pre: nil,
-		data: 12,
-		next: nil,
-	}
-	// longestConsecutive(as)
-	lru(as,12, 12)
+	// type dataStru struct  {
+	// 	pre <T>s
+	// 	data int
+	// 	next string
+	// }
+	// as := []int{}
+	// data := dataStru{
+	// 	pre: nil,
+	// 	data: 12,
+	// 	next: nil,
+	// }
+	// // longestConsecutive(as)
+	// lru(as,12, 12)
 }
