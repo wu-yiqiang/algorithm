@@ -33,9 +33,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.165. 比较版本号.executor": "Run",
     "Python.520. 检测大写字母.executor": "Run",
     "Python.判定是否互为字符重排.executor": "Run",
     "Python.合并陪许的数组.executor": "Run",
+    "Python.字符串的分数.executor": "Run",
     "Python.找不同.executor": "Run",
     "Python.有序数组的平方.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -62,6 +64,7 @@
       <workItem from="1741712461022" duration="2751000" />
       <workItem from="1741793262773" duration="1454000" />
       <workItem from="1741878020785" duration="2310000" />
+      <workItem from="1742028053459" duration="4930000" />
     </task>
     <servers />
   </component>
@@ -70,6 +73,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/algorithm$520__.coverage" NAME="520. 检测大写字母 Coverage Results" MODIFIED="1741713262813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeCode/Python" />
-    <SUITE FILE_PATH="coverage/algorithm$.coverage" NAME="有序数组的平方 Coverage Results" MODIFIED="1741881104941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeCode/Python" />
+    <SUITE FILE_PATH="coverage/algorithm$.coverage" NAME="字符串的分数 Coverage Results" MODIFIED="1742028976345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeCode/Python" />
+    <SUITE FILE_PATH="coverage/algorithm$165__.coverage" NAME="165. 比较版本号 Coverage Results" MODIFIED="1742033940281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LeeCode/Python" />
   </component>
 </project>
